@@ -7,6 +7,7 @@ export const projects = [
     category: "Architecture / Editorial / Web Design",
     description: "Сайт архитектурного бюро, где пространство, типографика и ритм работают так же точно, как чертёж.",
     url: "/showcase/nordica",
+    image: "/images/project-nordica.webp",
     tone: "sand",
   },
   {
@@ -17,6 +18,7 @@ export const projects = [
     category: "Beauty / Interactive / UI",
     description: "Иммерсивная витрина технологичной косметики с пластичной графикой и выразительной продуктовой подачей.",
     url: "/showcase/synthesis",
+    image: "/images/project-synthesis.webp",
     tone: "silver",
   },
   {
@@ -25,8 +27,9 @@ export const projects = [
     title: "TERRA",
     subtitle: "Вкус, у которого есть место",
     category: "Restaurant / Creative Development",
-    description: "Тёплая цифровая история ресторана — от первого впечатления до быстрого бронирования стола.",
+    description: "Тёплая цифровая история ресторана: от первого впечатления до быстрого бронирования стола.",
     url: "/showcase/terra",
+    image: "/images/project-terra.webp",
     tone: "terra",
   },
 ] as const;

@@ -79,7 +79,7 @@ export default function Home() {
         </section>
 
         <section className="work" id="work">
-          <div className="work-intro reveal"><p>SELECTED WORK</p><h2>Не обещания.<br />Готовые миры.</h2><span>Три концепции, три характера, одна точность исполнения.</span></div>
+          <div className="work-intro reveal"><p>SELECTED WORK</p><h2>Не обещания.<br />Готовые миры.</h2><span>Пять проектов, пять характеров, одна точность исполнения.</span></div>
           <div className="project-list">
             {projects.map((project, index) => (
               <article className="project reveal" key={project.slug}>
@@ -91,6 +91,13 @@ export default function Home() {
               <a className="project-media" href="/shop" aria-label="Открыть интернет-магазин ПАРА"><div className="project-shop-art"><span>ПАРА</span><i /></div><span className="project-view">Открыть магазин ↗</span></a>
               <div className="project-info"><span>04 / 2026</span><div><h3>ПАРА</h3><p>Город оставляет след</p></div><p>Footwear / Commerce / Motion</p></div>
             </article>
+            <article className="project project-atelier reveal">
+              <a className="project-media" href="https://atelier-anest-2026.kaloerovanestis603.chatgpt.site" target="_blank" rel="noreferrer" aria-label="Открыть сайт Atelier Anest в новой вкладке">
+                <Image src="/images/project-atelier.png" alt="Главный экран сайта ателье индивидуального пошива Atelier Anest" fill sizes="(max-width: 800px) 94vw, 70vw" />
+                <span className="project-view">Открыть сайт ↗</span>
+              </a>
+              <div className="project-info"><span>05 / 2026</span><div><h3>ATELIER</h3><p>Одежда, созданная для вас</p></div><p>Fashion / Editorial / Development</p></div>
+            </article>
           </div>
         </section>
 
@@ -98,7 +105,7 @@ export default function Home() {
 
         <section className="about" id="about">
           <div className="about-manifesto reveal"><span>ABOUT / ANESTIS</span><h2>Красивый сайт ничего не стоит, если он ничего не меняет.</h2></div>
-          <div className="about-detail reveal"><div className="about-mark">A®</div><div><p>Я создаю современные сайты для бизнеса, проектов и личных брендов. Соединяю ясную структуру, выразительный дизайн и аккуратную разработку.</p><p>Каждый проект должен быстро загружаться, легко читаться и уверенно вести человека к действию.</p></div><dl><div><dt>03+</dt><dd>авторских кейса</dd></div><div><dt>100%</dt><dd>адаптивный подход</dd></div><div><dt>1:1</dt><dd>работа напрямую</dd></div></dl></div>
+          <div className="about-detail reveal"><div className="about-mark">A®</div><div><p>Я создаю современные сайты для бизнеса, проектов и личных брендов. Соединяю ясную структуру, выразительный дизайн и аккуратную разработку.</p><p>Каждый проект должен быстро загружаться, легко читаться и уверенно вести человека к действию.</p></div><dl><div><dt>05+</dt><dd>авторских проектов</dd></div><div><dt>100%</dt><dd>адаптивный подход</dd></div><div><dt>1:1</dt><dd>работа напрямую</dd></div></dl></div>
         </section>
 
         <section className="services">

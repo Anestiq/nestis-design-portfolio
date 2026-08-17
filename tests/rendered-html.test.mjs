@@ -39,7 +39,7 @@ test("renders the footwear storefront and checkout", async () => {
   const shopHtml = await shop.text();
   assert.match(shopHtml, /ТВОЯ/);
   assert.match(shopHtml, /ПАРА\./);
-  assert.match(shopHtml, /КАТАЛОГ \/ .*12.* МОДЕЛЕЙ/);
+  assert.match(shopHtml, /КАТАЛОГ \/ .*18.* МОДЕЛЕЙ/);
   assert.match(shopHtml, /Vector 09/);
   assert.match(shopHtml, /para-og\.png/);
 

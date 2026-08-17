@@ -23,14 +23,26 @@ test("renders the portfolio home page and its primary actions", async () => {
   assert.match(html, /href="https:\/\/t\.me\/anestis"/);
   assert.match(html, /src="\/_next\/image\?url=%2Fimages%2Fproject-nordica\.webp/);
   assert.match(html, /og-v2\.png/);
+  assert.match(html, /NOX TRAINING/);
+  assert.match(html, /href="\/showcase\/nox-training"/);
 });
 
 test("renders every portfolio case route", async () => {
-  for (const [slug, title] of [["nordica", "NØRDICA"], ["synthesis", "SYNTHESIS"], ["terra", "TERRA"]]) {
+  for (const [slug, title] of [["nordica", "NØRDICA"], ["synthesis", "SYNTHESIS"], ["nox-training", "РАБОТАЕМ"], ["terra", "TERRA"]]) {
     const response = await render(`/showcase/${slug}`);
     assert.equal(response.status, 200);
     assert.match(await response.text(), new RegExp(title));
   }
+});
+
+test("renders NOX route with product sections and route metadata", async () => {
+  const response = await render("/showcase/nox-training");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /NOX TRAINING \| проект Anestis/);
+  assert.match(html, /STRENGTH/);
+  assert.match(html, /ГОРОД СПИТ/);
+  assert.match(html, /nox-og\.png/);
 });
 
 test("renders the footwear storefront and checkout", async () => {

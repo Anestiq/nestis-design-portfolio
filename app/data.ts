@@ -23,6 +23,17 @@ export const projects = [
   },
   {
     number: "03",
+    slug: "nox-training",
+    title: "NOX TRAINING",
+    subtitle: "Москва после темноты",
+    category: "Fitness / Brand Experience / Motion",
+    description: "Премиальный тренировочный клуб для тех, кто выбирает собственный ритм — после того, как город затихает.",
+    url: "/showcase/nox-training",
+    image: "/images/nox/nox-cover.png",
+    tone: "nox",
+  },
+  {
+    number: "04",
     slug: "terra",
     title: "TERRA",
     subtitle: "Вкус, у которого есть место",

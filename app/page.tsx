@@ -57,13 +57,13 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand" href="#top" onClick={closeMenu}>ANESTIS®</a>
-        <nav className="desktop-nav" aria-label="Основная навигация"><a href="#work">Работы</a><a href="#about">Обо мне</a><a href="#process">Процесс</a></nav>
+        <nav className="desktop-nav" aria-label="Основная навигация"><a href="#work">Работы</a><Link href="/shop">ПАРА / SHOP</Link><a href="#about">Обо мне</a><a href="#process">Процесс</a></nav>
         <a className="header-cta" href="#contact">Начать проект <span>↗</span></a>
         <button className={`burger ${menuOpen ? "active" : ""}`} onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}><i /><i /></button>
       </header>
 
       <aside id="mobile-menu" className={`mobile-menu ${menuOpen ? "active" : ""}`} aria-hidden={!menuOpen}>
-        <nav aria-label="Мобильная навигация">{[['Работы','#work'],['Обо мне','#about'],['Процесс','#process'],['Контакты','#contact']].map(([label, href]) => <a key={href} href={href} onClick={closeMenu}>{label}<span>↘</span></a>)}</nav>
+        <nav aria-label="Мобильная навигация">{[['Работы','#work'],['ПАРА / SHOP','/shop'],['Обо мне','#about'],['Процесс','#process'],['Контакты','#contact']].map(([label, href]) => <a key={href} href={href} onClick={closeMenu}>{label}<span>↘</span></a>)}</nav>
         <a href={contacts.telegram.href} target="_blank" rel="noreferrer">{contacts.telegram.label} ↗</a>
       </aside>
 
@@ -86,6 +86,10 @@ export default function Home() {
                 <div className="project-info"><span>{project.number} / 2026</span><div><h3>{project.title}</h3><p>{project.subtitle}</p></div><p>{project.category}</p></div>
               </article>
             ))}
+            <article className="project project-shop reveal">
+              <Link className="project-media" href="/shop" aria-label="Открыть интернет-магазин ПАРА"><div className="project-shop-art"><span>ПАРА</span><i /></div><span className="project-view">Открыть магазин ↗</span></Link>
+              <div className="project-info"><span>04 / 2026</span><div><h3>ПАРА</h3><p>Город оставляет след</p></div><p>Footwear / Commerce / Motion</p></div>
+            </article>
           </div>
         </section>
 

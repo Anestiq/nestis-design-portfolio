@@ -20,21 +20,33 @@ test("renders the portfolio home page and its primary actions", async () => {
   assert.match(html, /Сайты с идеей\./);
   assert.match(html, /Код с характером\./);
   assert.match(html, /href="#work"/);
-  assert.match(html, /href="https:\/\/t\.me\/anestis"/);
-  assert.match(html, /src="\/_next\/image\?url=%2Fimages%2Fproject-nordica\.webp/);
+  assert.match(html, /href="https:\/\/t\.me\/Anestiq"/);
+  assert.match(html, /src="\/_next\/image\?url=%2Fimages%2Fnox%2Fnox-cover\.png/);
   assert.match(html, /og-v2\.png/);
   assert.match(html, /NOX TRAINING/);
   assert.match(html, /href="\/showcase\/nox-training"/);
   assert.match(html, /AITHER ARCHITECTS/);
   assert.match(html, /href="\/showcase\/aither-architects"/);
-  assert.match(html, /Семь проектов/);
+  assert.match(html, /Четыре проекта/);
+  assert.match(html, /@Anestiq/);
+  assert.match(html, /КРАСНОДАР/);
+  assert.doesNotMatch(html, /hello@anestis\.dev/);
+  assert.doesNotMatch(html, /NØRDICA/);
+  assert.doesNotMatch(html, /SYNTHESIS/);
+  assert.doesNotMatch(html, /TERRA/);
 });
 
 test("renders every portfolio case route", async () => {
-  for (const [slug, title] of [["nordica", "NØRDICA"], ["synthesis", "SYNTHESIS"], ["nox-training", "РАБОТАЕМ"], ["aither-architects", "ПРОСТРАНСТВА"], ["terra", "TERRA"]]) {
+  for (const [slug, title] of [["nox-training", "РАБОТАЕМ"], ["aither-architects", "ПРОСТРАНСТВА"]]) {
     const response = await render(`/showcase/${slug}`);
     assert.equal(response.status, 200);
     assert.match(await response.text(), new RegExp(title));
+  }
+});
+
+test("removed portfolio routes return 404", async () => {
+  for (const slug of ["nordica", "synthesis", "terra"]) {
+    assert.equal((await render(`/showcase/${slug}`)).status, 404);
   }
 });
 

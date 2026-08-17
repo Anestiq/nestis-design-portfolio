@@ -4,16 +4,21 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 
 const directions = [
-  ["01", "STRENGTH", "Свободные веса, силовая техника и точная работа с нагрузкой."],
-  ["02", "BOXING", "Ринг, мешки, скорость реакции и выносливость без лишнего шума."],
-  ["03", "MOBILITY", "Подвижность, контроль и восстановление для свободного движения."],
-  ["04", "ENDURANCE", "Бег, кардио и интервальная работа в собственном темпе."],
+  ["01", "СИЛА", "Свободные веса, силовая техника и точная работа с нагрузкой.", "/images/nox/strength.webp"],
+  ["02", "БОКС", "Ринг, мешки, скорость реакции и выносливость без лишнего шума.", "/images/nox/boxing.webp"],
+  ["03", "МОБИЛЬНОСТЬ", "Подвижность, контроль и восстановление для свободного движения.", "/images/nox/mobility.webp"],
+  ["04", "ВЫНОСЛИВОСТЬ", "Бег, кардио и интервальная работа в собственном темпе.", "/images/nox/endurance.webp"],
 ];
 const sessions = [
-  ["19:30", "Strength Basics", "Артём Власов", "Сегодня", "Силовые"],
-  ["21:00", "Boxing Fundamentals", "Егор Нестеров", "Сегодня", "Бокс"],
-  ["22:15", "Mobility Reset", "София Орлова", "Завтра", "Мобилити"],
-  ["23:30", "Night Run", "Мила Ким", "Завтра", "Кардио"],
+  ["19:30", "Основы силы", "Артём Власов", "Сегодня", "Силовая тренировка"],
+  ["21:00", "Основы бокса", "Егор Нестеров", "Сегодня", "Бокс"],
+  ["22:15", "Свободное движение", "София Орлова", "Завтра", "Мобильность"],
+  ["23:30", "Ночной бег", "Мила Ким", "Завтра", "Выносливость"],
+];
+const gallery = [
+  ["Свободные веса", "/images/nox/weights.webp"], ["Ночной зал", "/images/nox/interior.webp"],
+  ["Боксёрская зона", "/images/nox/gloves.webp"], ["Кардио после полуночи", "/images/nox/endurance.webp"],
+  ["Recovery-зона", "/images/nox/recovery.webp"], ["Работа над движением", "/images/nox/mobility.webp"],
 ];
 const coaches = [
   ["01", "Артём Власов", "STRENGTH", "Сила начинается с техники"],
@@ -47,7 +52,7 @@ export default function NoxTraining() {
     window.addEventListener("keydown", onKey);
     return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", onKey); };
   }, [modal]);
-  const filtered = sessions.filter((s) => filter === "Сегодня" || filter === "Завтра" ? s[3] === filter : s[4] === filter);
+  const filtered = sessions.filter((s) => s[3] === filter);
   const submit = (e: FormEvent) => { e.preventDefault(); setSent(true); };
 
   return <main className="nox">
@@ -57,12 +62,12 @@ export default function NoxTraining() {
     <section className="nox-hero" id="top"><div className="nox-hero-image"/><div className="nox-hero-shade"/><div className="nox-hero-copy"><p>MOSCOW / AFTER DARK</p><h1>РАБОТАЕМ,<br/>КОГДА ОСТАЛЬНЫЕ<br/><em>СПЯТ.</em></h1><div><p>Тренировочный клуб для тех,<br/>кто выбирает свой ритм.</p><span><a href="#directions">Выбрать направление</a><a href="#club">Посмотреть клуб</a></span></div></div><small>SCROLL TO ENTER ↓</small></section>
     <div className="nox-ticker"><div>STRENGTH / BOXING / MOBILITY / ENDURANCE / RECOVERY / STRENGTH / BOXING / MOBILITY / ENDURANCE / RECOVERY /</div></div>
     <div id="nox-content">
-      <section className="nox-manifest nox-reveal"><p>MANIFEST / 00:47</p><h2>Когда город<br/>замедляется,<br/><i>ты продолжаешь.</i></h2><div className="nox-facts">{[["24/7","доступ в клуб"],["04","тренировочные зоны"],["45+","занятий в неделю"],["01","режим: твой"]].map(([n,l])=><div key={n}><strong>{n}</strong><span>{l}</span></div>)}</div></section>
-      <section className="nox-directions" id="directions"><header className="nox-section-title nox-reveal"><p>01 / TRAINING</p><h2>ВЫБЕРИ<br/>СВОЮ РАБОТУ.</h2></header><div className="nox-dir-layout"><div className="nox-dir-image" style={{backgroundPosition:`${20+activeDirection*20}% center`}}><span>0{activeDirection+1}</span></div><div className="nox-dir-list">{directions.map(([n,t,d],i)=><button key={t} className={i===activeDirection?"active":""} onMouseEnter={()=>setActiveDirection(i)} onClick={()=>setActiveDirection(i)} aria-expanded={i===activeDirection}><span>{n}</span><strong>{t}</strong><i>↗</i><p>{d}</p></button>)}</div></div></section>
-      <section className="nox-schedule" id="schedule"><header className="nox-section-title nox-reveal"><p>02 / SCHEDULE</p><h2>ГОРОД СПИТ.<br/>ЗАЛ РАБОТАЕТ.</h2></header><div className="nox-filters" role="group" aria-label="Фильтры расписания">{["Сегодня","Завтра","Силовые","Бокс","Мобилити","Кардио"].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f}</button>)}</div><div className="nox-session-list">{filtered.map(([time,title,coach,,type])=><article key={title}><time>{time}</time><h3>{title}</h3><p>{coach}</p><span>{type}</span></article>)}</div></section>
-      <section className="nox-coaches" id="coaches"><header className="nox-section-title nox-reveal"><p>03 / COACHES</p><h2>ЛЮДИ,<br/>КОТОРЫЕ ВЕДУТ.</h2></header><div className="nox-coach-grid">{coaches.map(([n,name,type,quote],i)=><article key={name} style={{"--pos":`${i*24}%`} as React.CSSProperties}><div/><span>{n}</span><h3>{name}</h3><p>{type}</p><blockquote>«{quote}»</blockquote></article>)}</div></section>
+      <section className="nox-manifest nox-reveal"><p>MANIFEST / 00:47</p><h2>Когда город<br/>замедляется,<br/><i>ты продолжаешь.</i></h2><div className="nox-facts">{[["24/7","доступ в клуб"],["04","тренировочные зоны"],["45+","занятий в неделю"]].map(([n,l])=><div key={n}><strong>{n}</strong><span>{l}</span></div>)}</div></section>
+      <section className="nox-directions" id="directions"><header className="nox-section-title nox-reveal"><p>01 / НАПРАВЛЕНИЯ</p><h2>ВЫБЕРИ<br/>НАПРАВЛЕНИЕ.</h2></header><div className="nox-dir-layout"><div className="nox-dir-image" style={{backgroundImage:`url(${directions[activeDirection][3]})`}}><span>{directions[activeDirection][0]}</span></div><div className="nox-dir-list">{directions.map(([n,t,d],i)=><button key={t} className={i===activeDirection?"active":""} onMouseEnter={()=>setActiveDirection(i)} onClick={()=>setActiveDirection(i)} aria-pressed={i===activeDirection}><span>{n}</span><strong>{t}</strong><i>↗</i><p>{d}</p></button>)}</div></div></section>
+      <section className="nox-schedule" id="schedule"><header className="nox-section-title nox-reveal"><p>02 / РАСПИСАНИЕ</p><h2>ГОРОД СПИТ.<br/>ЗАЛ РАБОТАЕТ.</h2></header><div className="nox-filters" role="group" aria-label="День расписания">{["Сегодня","Завтра"].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f}</button>)}</div><div className="nox-session-list">{filtered.map(([time,title,coach,,type])=><article key={title}><time>{time}</time><h3>{title}</h3><p>{coach}</p><span>{type}</span></article>)}</div></section>
+      <section className="nox-coaches" id="coaches"><header className="nox-section-title nox-reveal"><p>03 / ТРЕНЕРЫ</p><h2>ТРЕНЕРЫ<br/>NOX.</h2></header><div className="nox-coach-grid">{coaches.map(([n,name,type,quote],i)=><article key={name} style={{"--pos":`${i*24}%`} as React.CSSProperties}><div/><span>{n}</span><h3>{name}</h3><p>{type}</p><blockquote>«{quote}»</blockquote></article>)}</div></section>
       <section className="nox-pricing"><header className="nox-section-title nox-reveal"><p>04 / MEMBERSHIP</p><h2>ДОСТУП<br/>К СВОЕМУ РИТМУ.</h2></header><div>{plans.map(([name,desc,price],i)=><article className={i===2?"featured":""} key={name}><span>0{i+1}</span><h3>{name}</h3><p>{desc}</p><strong>{price}</strong><button onClick={()=>setModal(true)}>Выбрать абонемент ↗</button></article>)}</div></section>
-      <section className="nox-club" id="club"><header className="nox-section-title nox-reveal"><p>05 / THE CLUB</p><h2>МЕТАЛЛ. СВЕТ.<br/>ТИШИНА.</h2></header><div className="nox-gallery">{["Свободные веса","Ночной зал","Боксёрская зона","Кардио после полуночи","Recovery-зона","Свет и детали"].map((x,i)=><figure key={x} className={`g${i+1}`}><div style={{backgroundPosition:`${i*18}% center`}}/><figcaption>0{i+1} / {x}</figcaption></figure>)}</div></section>
+      <section className="nox-club" id="club"><header className="nox-section-title nox-reveal"><p>05 / КЛУБ</p><h2>МЕТАЛЛ. СВЕТ.<br/>ТИШИНА.</h2></header><div className="nox-gallery">{gallery.map(([caption,image],i)=><figure key={caption} className={`g${i+1}`}><div style={{backgroundImage:`url(${image})`}}/><figcaption>0{i+1} / {caption}</figcaption></figure>)}</div></section>
       <section className="nox-final"><p>NO EXCUSES / NO NOISE</p><h2>ТВОЙ РЕЖИМ<br/>НАЧИНАЕТСЯ<br/><i>ПОСЛЕ ТЕМНОТЫ.</i></h2><div><p>Первая тренировка — без обязательств. Выбери направление, оставь контакты, и мы подберём удобное время.</p><button onClick={()=>{setSent(false);setModal(true)}}>Записаться на первую тренировку ↗</button></div></section>
     </div>
     <footer className="nox-footer"><a href="#top">NOX <b>TRAINING</b></a><div><span>Москва, Хлебный переулок, 19</span><a href="tel:+74950000000">+7 (495) 000-00-00</a></div><div><button type="button">Instagram</button><button type="button">Telegram</button><a href="#club">Контакты</a></div><p>Работаем, когда остальные спят.</p></footer>

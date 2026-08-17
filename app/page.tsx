@@ -2,7 +2,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { contacts, projects } from "./data";
 
@@ -83,7 +82,7 @@ export default function Home() {
           <div className="project-list">
             {projects.map((project, index) => (
               <article className="project reveal" key={project.slug}>
-                <Link className="project-media" href={project.url} aria-label={`Открыть кейс ${project.title}`}><Image src={project.image} alt={`Главный экран проекта ${project.title}`} fill sizes="(max-width: 800px) 94vw, 70vw" priority={index === 0} /><span className="project-view">Смотреть кейс ↗</span></Link>
+                <a className="project-media" href={project.url} aria-label={`Открыть кейс ${project.title}`}><Image src={project.image} alt={`Главный экран проекта ${project.title}`} fill sizes="(max-width: 800px) 94vw, 70vw" priority={index === 0} /><span className="project-view">Смотреть кейс ↗</span></a>
                 <div className="project-info"><span>{project.number} / 2026</span><div><h3>{project.title}</h3><p>{project.subtitle}</p></div><p>{project.category}</p></div>
               </article>
             ))}

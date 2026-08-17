@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-html-link-for-pages */
 
 import Image from "next/image";
 import Link from "next/link";
@@ -57,7 +58,7 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand" href="#top" onClick={closeMenu}>ANESTIS®</a>
-        <nav className="desktop-nav" aria-label="Основная навигация"><a href="#work">Работы</a><Link href="/shop">ПАРА / SHOP</Link><a href="#about">Обо мне</a><a href="#process">Процесс</a></nav>
+        <nav className="desktop-nav" aria-label="Основная навигация"><a href="#work">Работы</a><a href="/shop">ПАРА / SHOP</a><a href="#about">Обо мне</a><a href="#process">Процесс</a></nav>
         <a className="header-cta" href="#contact">Начать проект <span>↗</span></a>
         <button className={`burger ${menuOpen ? "active" : ""}`} onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}><i /><i /></button>
       </header>
@@ -87,7 +88,7 @@ export default function Home() {
               </article>
             ))}
             <article className="project project-shop reveal">
-              <Link className="project-media" href="/shop" aria-label="Открыть интернет-магазин ПАРА"><div className="project-shop-art"><span>ПАРА</span><i /></div><span className="project-view">Открыть магазин ↗</span></Link>
+              <a className="project-media" href="/shop" aria-label="Открыть интернет-магазин ПАРА"><div className="project-shop-art"><span>ПАРА</span><i /></div><span className="project-view">Открыть магазин ↗</span></a>
               <div className="project-info"><span>04 / 2026</span><div><h3>ПАРА</h3><p>Город оставляет след</p></div><p>Footwear / Commerce / Motion</p></div>
             </article>
           </div>

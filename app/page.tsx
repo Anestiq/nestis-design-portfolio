@@ -93,7 +93,7 @@ export default function Home() {
             </article>
             <article className="project project-atelier reveal">
               <a className="project-media" href="https://atelier-anest-2026.kaloerovanestis603.chatgpt.site" target="_blank" rel="noreferrer" aria-label="Открыть сайт Atelier Anest в новой вкладке">
-                <Image src="/images/project-atelier.png" alt="Главный экран сайта ателье индивидуального пошива Atelier Anest" fill sizes="(max-width: 800px) 94vw, 70vw" />
+                <Image src="/images/project-atelier-v2.webp" alt="Мастер Atelier Anest раскраивает шерстяную ткань на рабочем столе" fill sizes="(max-width: 800px) 94vw, 70vw" />
                 <span className="project-view">Открыть сайт ↗</span>
               </a>
               <div className="project-info"><span>05 / 2026</span><div><h3>ATELIER</h3><p>Одежда, созданная для вас</p></div><p>Fashion / Editorial / Development</p></div>

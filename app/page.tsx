@@ -41,9 +41,9 @@ export default function Home() {
       <div ref={cursorRef} className="cursor" aria-hidden="true" />
 
       <header className="site-header">
-        <a className="brand" href="#top" onClick={closeMenu}>ANESTIS®</a>
-        <nav className="desktop-nav" aria-label="Основная навигация"><a href="#work">Работы</a><a href="/shop">ПАРА / SHOP</a><a href="#about">Обо мне</a><a href="#contact">Контакты</a></nav>
-        <a className="header-cta" href="#contact">Начать проект <span>↗</span></a>
+        <a className="brand" href="#top" onClick={closeMenu}><b>A®</b><span>ANESTIS<br />DIGITAL STUDIO</span></a>
+        <nav className="desktop-nav" aria-label="Основная навигация"><a href="#work"><i>01</i>Работы</a><a href="/shop"><i>02</i>ПАРА / SHOP</a><a href="#about"><i>03</i>Обо мне</a><a href="#contact"><i>04</i>Контакты</a></nav>
+        <a className="header-cta" href="#contact"><small>Есть задача?</small>Начать проект <span>↗</span></a>
         <button className={`burger ${menuOpen ? "active" : ""}`} onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}><i /><i /></button>
       </header>
 

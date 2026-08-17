@@ -29,6 +29,7 @@ export default function AitherArchitects() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [sent, setSent] = useState(false);
+  const [projectType, setProjectType] = useState("");
   const openButton = useRef<HTMLButtonElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
 
@@ -55,14 +56,16 @@ export default function AitherArchitects() {
 
   const closeModal = () => { setModalOpen(false); window.setTimeout(() => openButton.current?.focus(), 20); };
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true); };
+  const openBrief = (type = "") => { setProjectType(type); setSent(false); setModalOpen(true); };
 
   return (
     <main className="aither" id="aither-top">
       <a className="aither-skip" href="#aither-content">К содержанию</a>
       <header className="aither-header">
-        <a href="/" className="aither-back">← CASE / ANESTIS</a>
-        <a className="aither-logo" href="#aither-top" aria-label="Aither Architects, наверх"><b>AITHER</b><span>ARCHITECTS</span></a>
-        <nav aria-label="Навигация Aither"><a href="#aither-projects">Проекты</a><a href="#aither-studio">Студия</a><a href="#aither-contact">Контакт</a></nav>
+        <a className="aither-logo" href="#aither-top" aria-label="Aither Architects, наверх"><b>AITHER</b><span>ARCHITECTS / ATHENS</span></a>
+        <p className="aither-coordinate">37.9838° N<br />23.7275° E</p>
+        <nav aria-label="Навигация Aither"><a href="#aither-projects"><i>01</i>Проекты</a><a href="#aither-studio"><i>02</i>Студия</a><a href="#aither-contact"><i>03</i>Контакт</a></nav>
+        <a href="/" className="aither-back">ANESTIS / CASE ↗</a>
         <button className="aither-menu-button" onClick={() => setMenuOpen(true)} aria-expanded={menuOpen} aria-controls="aither-mobile-menu">MENU</button>
       </header>
 
@@ -115,7 +118,7 @@ export default function AitherArchitects() {
 
       <section className="aither-services">
         <header className="aither-reveal"><p className="aither-kicker">WHAT WE DO</p><h2>Направления</h2></header>
-        <div>{services.map(([n, title, text]) => <article className="aither-reveal" key={n}><span>{n}</span><h3>{title}</h3><p>{text}</p><i>↗</i></article>)}</div>
+        <div>{services.map(([n, title, text]) => <button type="button" className="aither-service aither-reveal" key={n} onClick={() => openBrief(title)} aria-label={`${title}: открыть форму заявки`}><span>{n}</span><h3>{title}</h3><p>{text}</p><i>ОБСУДИТЬ ↗</i></button>)}</div>
       </section>
 
       <section className="aither-process">
@@ -132,14 +135,14 @@ export default function AitherArchitects() {
 
       <section className="aither-contact" id="aither-contact">
         <p className="aither-kicker aither-reveal">START A CONVERSATION</p><h2 className="aither-reveal">НАЧНЁМ<br />С МЕСТА.</h2>
-        <div className="aither-reveal"><p>Расскажите о вашем участке, идее или будущем пространстве. Мы вернёмся с первым направлением для разговора.</p><button ref={openButton} onClick={() => { setSent(false); setModalOpen(true); }}>Обсудить проект ↗</button></div>
+        <div className="aither-reveal"><p>Расскажите о вашем участке, идее или будущем пространстве. Мы вернёмся с первым направлением для разговора.</p><button ref={openButton} onClick={() => openBrief()}>Обсудить проект ↗</button></div>
       </section>
 
       <footer className="aither-footer"><a href="#aither-top"><b>AITHER</b><span>ARCHITECTS</span></a><div><p>Athens / Greece</p><a href="mailto:hello@aither-architects.com">hello@aither-architects.com</a></div><nav><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.behance.net/" target="_blank" rel="noreferrer">Behance</a><a href="#aither-contact">Contact</a></nav><p>Built around light.<br />© 2026</p></footer>
 
       {modalOpen && <div className="aither-modal" role="dialog" aria-modal="true" aria-labelledby="aither-modal-title">
         <button className="aither-modal-backdrop" onClick={closeModal} aria-label="Закрыть окно" />
-        <div>{!sent ? <><button ref={closeButton} className="aither-modal-close" onClick={closeModal}>CLOSE ×</button><p className="aither-kicker">NEW PROJECT / AITHER</p><h2 id="aither-modal-title">Расскажите<br />о месте.</h2><form onSubmit={submit}><label>Имя<input name="name" required autoComplete="name" /></label><label>Email<input name="email" type="email" required autoComplete="email" /></label><label>Тип проекта<select name="type" required defaultValue=""><option value="" disabled>Выберите направление</option><option>Частный дом</option><option>Бутик-отель</option><option>Интерьер</option><option>Другое</option></select></label><label>Коротко о задаче<textarea name="message" required rows={3} /></label><button type="submit">Отправить запрос ↗</button></form></> : <div className="aither-success"><span>✓</span><h2>Спасибо.</h2><p>Мы получили ваше сообщение и скоро свяжемся с вами.</p><button ref={closeButton} onClick={closeModal}>Закрыть</button></div>}</div>
+        <div>{!sent ? <><button ref={closeButton} className="aither-modal-close" onClick={closeModal}>CLOSE ×</button><p className="aither-kicker">NEW PROJECT / AITHER</p><h2 id="aither-modal-title">Расскажите<br />о месте.</h2><form onSubmit={submit}><label>Имя<input name="name" required autoComplete="name" /></label><label>Email<input name="email" type="email" required autoComplete="email" /></label><label>Тип проекта<select name="type" required value={projectType} onChange={(event) => setProjectType(event.target.value)}><option value="" disabled>Выберите направление</option><option>Частная архитектура</option><option>Бутик-отели</option><option>Интерьеры</option><option>Авторский надзор</option><option>Другое</option></select></label><label>Коротко о задаче<textarea name="message" required rows={3} /></label><button type="submit">Отправить запрос ↗</button></form></> : <div className="aither-success"><span>✓</span><h2>Спасибо.</h2><p>Мы получили ваше сообщение и скоро свяжемся с вами.</p><button ref={closeButton} onClick={closeModal}>Закрыть</button></div>}</div>
       </div>}
     </main>
   );

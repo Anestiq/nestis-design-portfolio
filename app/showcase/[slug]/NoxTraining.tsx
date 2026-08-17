@@ -16,8 +16,8 @@ const sessions = [
   ["23:30", "Ночной бег", "Мила Ким", "Завтра", "Выносливость"],
 ];
 const gallery = [
-  ["Свободные веса", "/images/nox/weights.webp"], ["Ночной зал", "/images/nox/interior.webp"],
-  ["Боксёрская зона", "/images/nox/gloves.webp"], ["Кардио после полуночи", "/images/nox/endurance.webp"],
+  ["Свободные веса", "/images/nox/weights.webp"], ["Ночной зал", "/images/nox/night-interior.webp"],
+  ["Боксёрская зона", "/images/nox/gloves.webp"], ["Кардио после полуночи", "/images/nox/night-cardio.jpg"],
   ["Recovery-зона", "/images/nox/recovery.webp"], ["Работа над движением", "/images/nox/mobility.webp"],
 ];
 const coaches = [

@@ -42,13 +42,13 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand" href="#top" onClick={closeMenu}><b>A®</b><span>ANESTIS<br />DIGITAL STUDIO</span></a>
-        <nav className="desktop-nav" aria-label="Основная навигация"><a href="#work"><i>01</i>Работы</a><a href="/shop"><i>02</i>ПАРА / SHOP</a><a href="#about"><i>03</i>Обо мне</a><a href="#contact"><i>04</i>Контакты</a></nav>
+        <nav className="desktop-nav" aria-label="Основная навигация"><a href="#work"><i>01</i>Работы</a><a href="#about"><i>02</i>Обо мне</a><a href="#contact"><i>03</i>Контакты</a></nav>
         <a className="header-cta" href="#contact"><small>Есть задача?</small>Начать проект <span>↗</span></a>
         <button className={`burger ${menuOpen ? "active" : ""}`} onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}><i /><i /></button>
       </header>
 
       <aside id="mobile-menu" className={`mobile-menu ${menuOpen ? "active" : ""}`} aria-hidden={!menuOpen}>
-        <nav aria-label="Мобильная навигация">{[['Работы','#work'],['ПАРА / SHOP','/shop'],['Обо мне','#about'],['Контакты','#contact']].map(([label, href]) => <a key={href} href={href} onClick={closeMenu}>{label}<span>↘</span></a>)}</nav>
+        <nav aria-label="Мобильная навигация">{[['Работы','#work'],['Обо мне','#about'],['Контакты','#contact']].map(([label, href]) => <a key={href} href={href} onClick={closeMenu}>{label}<span>↘</span></a>)}</nav>
         <a href={contacts.telegram.href} target="_blank" rel="noreferrer">{contacts.telegram.label} ↗</a>
       </aside>
 
@@ -89,7 +89,7 @@ export default function Home() {
 
         <section className="about" id="about">
           <div className="about-manifesto reveal"><span>ABOUT / ANESTIS</span><h2>Красивый сайт ничего не стоит, если он ничего не меняет.</h2></div>
-          <div className="about-detail reveal"><div className="about-mark">A®</div><div><p>Я собираю сайты с разным характером и показываю здесь только те работы, которые уже можно открыть и проверить.</p><p>В портфолио — четыре проекта: архитектурное бюро, фитнес-клуб, магазин обуви и ателье.</p></div><dl><div><dt>04</dt><dd>работы в портфолио</dd></div><div><dt>UI</dt><dd>дизайн интерфейсов</dd></div><div><dt>CODE</dt><dd>фронтенд-разработка</dd></div></dl></div>
+          <div className="about-detail reveal"><a className="about-avatar" href={contacts.instagram.href} target="_blank" rel="noreferrer" aria-label="Instagram Nestis Design"><Image src="/images/anestis-avatar.png" alt="Логотип Nestis Design" fill sizes="(max-width: 700px) 64vw, 280px" /></a><div className="about-copy"><span>ANESTIS / WEB DESIGNER</span><p>Проектирую и собираю сайты: продумываю структуру, визуальный язык, адаптив и движение интерфейса.</p><p>Здесь четыре разные задачи — архитектурное бюро, фитнес-клуб, магазин обуви и ателье.</p><a className="instagram-link" href={contacts.instagram.href} target="_blank" rel="noreferrer"><small>INSTAGRAM</small><b>{contacts.instagram.label}</b><i>↗</i></a></div></div>
         </section>
 
         <section className="contact" id="contact">

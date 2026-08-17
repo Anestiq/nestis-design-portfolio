@@ -161,19 +161,23 @@ footer { height:76px; display:flex; align-items:center; justify-content:space-be
 @media(max-width:700px){.shop-hero-shoe{width:86vw;right:-34vw;top:51%}.editorial-shoe{width:92vw;right:-42vw;top:43%}}
 
 /* ПАРА / refined interaction and palette */
-.shop-page{--shop-hot:#3157ff;--shop-accent:#efff3f}
+.shop-page{--shop-hot:#8b3d30;--shop-accent:#efff3f}
 .shop-cursor{position:fixed;z-index:1000;left:-10px;top:-10px;width:20px;height:20px;border:2px solid #efff3f;border-radius:50%;pointer-events:none;mix-blend-mode:difference;transition:width .18s,height .18s,background .18s}
 .shop-active a:hover~.shop-cursor,.shop-active button:hover~.shop-cursor{width:34px;height:34px}
 .shop-header{background:rgba(8,10,16,.72);backdrop-filter:blur(16px)}
 .shop-page .shop-kicker,.shop-editorial span,.checkout-title p,.checkout-form h2,.order-success span,.related>p{color:var(--shop-accent)}
 .shop-marquee{background:var(--shop-accent)}
-.shop-hero:after{background:#3157ff}
-.product-image:after{background:linear-gradient(120deg,transparent 48%,rgba(49,87,255,.32))}
+.shop-hero:after{background:#262521;opacity:.94;border-left:1px solid rgba(239,255,63,.55);background-image:repeating-linear-gradient(112deg,transparent 0 86px,rgba(239,255,63,.055) 87px 88px)}
+.product-image:after{background:linear-gradient(120deg,transparent 48%,rgba(139,61,48,.34))}
 .product-image>i,.shop-bag span{background:var(--shop-accent)}
-.catalog-intro>p,.checkout-form aside h2,.detail-info>p:first-child{color:#2146da}
-.shop-editorial:before{border-color:rgba(49,87,255,.7);box-shadow:0 0 150px rgba(49,87,255,.16)}
+.catalog-intro>p,.checkout-form aside h2,.detail-info>p:first-child{color:#82392e}
+.shop-editorial:before{border-color:rgba(139,61,48,.72);box-shadow:0 0 150px rgba(139,61,48,.16)}
 .shop-footer p{display:none}.shop-footer{justify-content:space-between}
 .cart-empty a{align-self:flex-start;margin-top:25px;padding:14px 0;border-bottom:1px solid}
+.size-chart-trigger{padding:0;border:0;background:none;color:#666;font-size:8px;letter-spacing:.13em;text-decoration:underline;text-underline-offset:5px}
+.size-chart-scrim{position:fixed;z-index:500;inset:0;display:grid;place-items:center;padding:20px;background:rgba(4,4,4,.72)}
+.size-chart{width:min(640px,100%);max-height:calc(100vh - 40px);overflow:auto;padding:30px;background:#efeee8;color:#111;box-shadow:12px 12px 0 #8b3d30}
+.size-chart header{display:flex;justify-content:space-between;gap:30px;align-items:flex-start;padding-bottom:24px;border-bottom:1px solid #aaa}.size-chart header span{font-size:8px;letter-spacing:.15em;color:#82392e}.size-chart h2{margin:7px 0 0;font-size:clamp(36px,5vw,70px);letter-spacing:-.06em}.size-chart header button{border:0;background:none;font-size:9px;letter-spacing:.13em}.size-chart>p{max-width:520px;margin:24px 0;color:#666;line-height:1.55}.size-table{border-top:1px solid #999}.size-table>div{display:grid;grid-template-columns:1fr 2fr 1fr;align-items:center;min-height:52px;border-bottom:1px solid #bbb}.size-table>div:first-child{min-height:36px;color:#777;font-size:8px;letter-spacing:.12em}.size-table strong{font-size:22px}.size-table button{justify-self:end;padding:9px 12px;border:1px solid #888;background:transparent;font-size:8px;letter-spacing:.1em}.size-table button:hover{background:#111;color:#fff}
 
 @media(max-width:700px){
   .shop-cursor{display:none}
@@ -194,4 +198,5 @@ footer { height:76px; display:flex; align-items:center; justify-content:space-be
   .cart-drawer{padding:0 18px 22px}.cart-head{height:68px}.cart-empty{min-height:calc(100vh - 90px)}
   .product-detail{padding:92px 18px 60px;gap:32px}.detail-media{aspect-ratio:1.05}.detail-info h1{margin-top:16px}.detail-price{margin:22px 0}.detail-copy{font-size:14px}.detail-info fieldset{margin-top:32px}.add-button{position:sticky;bottom:12px;z-index:10}
   .checkout-page{padding:84px 18px}.checkout-title{padding-bottom:42px}.checkout-form aside{margin-left:-18px;margin-right:-18px}
+  .size-chart-scrim{align-items:end;padding:0}.size-chart{max-height:88vh;width:100%;padding:22px 18px;box-shadow:none}.size-chart h2{font-size:42px}.size-table>div{grid-template-columns:1fr 1.4fr 1fr}
 }

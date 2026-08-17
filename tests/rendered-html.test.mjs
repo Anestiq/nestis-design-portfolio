@@ -25,14 +25,29 @@ test("renders the portfolio home page and its primary actions", async () => {
   assert.match(html, /og-v2\.png/);
   assert.match(html, /NOX TRAINING/);
   assert.match(html, /href="\/showcase\/nox-training"/);
+  assert.match(html, /AITHER ARCHITECTS/);
+  assert.match(html, /href="\/showcase\/aither-architects"/);
+  assert.match(html, /Семь проектов/);
 });
 
 test("renders every portfolio case route", async () => {
-  for (const [slug, title] of [["nordica", "NØRDICA"], ["synthesis", "SYNTHESIS"], ["nox-training", "РАБОТАЕМ"], ["terra", "TERRA"]]) {
+  for (const [slug, title] of [["nordica", "NØRDICA"], ["synthesis", "SYNTHESIS"], ["nox-training", "РАБОТАЕМ"], ["aither-architects", "ПРОСТРАНСТВА"], ["terra", "TERRA"]]) {
     const response = await render(`/showcase/${slug}`);
     assert.equal(response.status, 200);
     assert.match(await response.text(), new RegExp(title));
   }
+});
+
+test("renders AITHER with its sections and route metadata", async () => {
+  const response = await render("/showcase/aither-architects");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /AITHER ARCHITECTS \| проект Anestis/);
+  assert.match(html, /ПРОПОРЦИЯ.*ВНЕ ВРЕМЕНИ/s);
+  assert.match(html, /VILLA ARKO/);
+  assert.match(html, /НАЧНЁМ.*С МЕСТА/s);
+  assert.match(html, /images\/aither\/hero\.png/);
+  assert.doesNotMatch(html, /og-v2\.png/);
 });
 
 test("renders NOX route with product sections and route metadata", async () => {

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projects } from "../../data";
 import NoxTraining from "./NoxTraining";
+import AitherArchitects from "./AitherArchitects";
 
 type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() { return projects.map(({ slug }) => ({ slug })); }
@@ -16,6 +17,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const image = "/images/nox/nox-og.png";
     return { title, description: project.description, openGraph: { title, description: project.description, images: [image] }, twitter: { card: "summary_large_image", title, description: project.description, images: [image] } };
   }
+  if (project.slug === "aither-architects") {
+    const image = "/images/aither/hero.png";
+    return { title, description: project.description, openGraph: { title, description: project.description, images: [image] }, twitter: { card: "summary_large_image", title, description: project.description, images: [image] } };
+  }
   return { title, description: project.description, openGraph: { title, description: project.description, images: [] }, twitter: { title, description: project.description, images: [] } };
 }
 
@@ -24,6 +29,7 @@ export default async function ShowcasePage({ params }: Props) {
   const project = projects.find((item) => item.slug === slug);
   if (!project) notFound();
   if (project.slug === "nox-training") return <NoxTraining />;
+  if (project.slug === "aither-architects") return <AitherArchitects />;
   return (
     <main className={`demo-page demo-${project.tone}`}>
       <header className="demo-header"><Link href="/">← ANESTIS / CASE</Link><span>{project.category}</span><Link href="/">CLOSE ×</Link></header>

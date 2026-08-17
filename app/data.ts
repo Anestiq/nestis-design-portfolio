@@ -34,6 +34,17 @@ export const projects = [
   },
   {
     number: "04",
+    slug: "aither-architects",
+    title: "AITHER ARCHITECTS",
+    subtitle: "Пространства, в которых остаётся свет",
+    category: "Architecture / Editorial / Art Direction",
+    description: "Светлая цифровая монография архитектурного бюро, где белый камень, воздух и ландшафт складываются в единую систему.",
+    url: "/showcase/aither-architects",
+    image: "/images/aither/hero.png",
+    tone: "aither",
+  },
+  {
+    number: "05",
     slug: "terra",
     title: "TERRA",
     subtitle: "Вкус, у которого есть место",
